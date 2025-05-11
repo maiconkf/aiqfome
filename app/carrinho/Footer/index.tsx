@@ -15,7 +15,7 @@ export default function FooterCart() {
 							{formatPrice(totalPrice())}
 						</p>
 					</div>
-					{storeMinimunOrderValue < totalPrice() ? (
+					{storeMinimunOrderValue <= totalPrice(false) ? (
 						<button
 							className="bg-[#7B1FA2] rounded-lg text-white text-sm font-bold px-10 py-3.5 cursor-pointer touch-manipulation"
 							onClick={() => alert('Página em construção')}

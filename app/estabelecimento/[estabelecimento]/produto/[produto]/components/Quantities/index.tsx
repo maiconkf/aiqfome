@@ -94,6 +94,8 @@ export default function QuantitiesSection({
 		const storeName = storeData?.name ?? ''
 		const storeImage = storeData?.logo ?? ''
 		const storeMinimunOrderValue = storeData?.minimum_order_value ?? 0
+		const storeDeliveryFee = storeData?.delivery_fee ?? 0
+		const storeFreeDeliveryMinimum = storeData?.free_delivery_minimum ?? null
 
 		addToCart(
 			{
@@ -109,7 +111,9 @@ export default function QuantitiesSection({
 			storeId,
 			storeName,
 			storeImage,
-			storeMinimunOrderValue
+			storeMinimunOrderValue,
+			storeDeliveryFee,
+			storeFreeDeliveryMinimum
 		)
 	}
 

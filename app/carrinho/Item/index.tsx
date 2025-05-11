@@ -7,7 +7,14 @@ import ItemTitle from './Title'
 import ItemDescription from './Description'
 
 export default function ItemCart({ items }: IItem) {
-	const { decreaseQuantity, increaseQuantity, removeFromCart } = useCartStore()
+	const {
+		decreaseQuantity,
+		increaseQuantity,
+		removeFromCart,
+		storeDeliveryFee,
+		totalPrice,
+		storeFreeDeliveryMinimum,
+	} = useCartStore()
 	const router = useRouter()
 
 	return items.map((item, idx) => {
@@ -151,6 +158,23 @@ export default function ItemCart({ items }: IItem) {
 							})}
 						</div>
 					)}
+					{storeDeliveryFee > 0 &&
+						(!storeFreeDeliveryMinimum ||
+							totalPrice(false) <= storeFreeDeliveryMinimum) && (
+							<div className="mb-1.5">
+								<ItemTitle title="frete" />
+
+								<div className="flex items-center mb-0.5">
+									<ItemDescription
+										description="taxa de entrega"
+										hasMr3={true}
+									/>
+									<p className="font-bold text-xs text-[#00A296]">
+										{formatPrice(storeDeliveryFee)}
+									</p>
+								</div>
+							</div>
+						)}
 					{item.observations && (
 						<p className="text-xs mb-1.5 font-semibold bg-[#F5F6F9] rounded p-1.5">
 							<span className="font-bold bg-[#F5F5F5] mr-1">observação:</span>

@@ -10,13 +10,17 @@ export const useCartStore = create<CartState>()(
 			storeName: null,
 			storeImage: null,
 			storeMinimunOrderValue: 0,
+			storeDeliveryFee: 0,
+			storeFreeDeliveryMinimum: null,
 
 			addToCart: (
 				newItem,
 				storeId,
 				storeName,
 				storeImage,
-				storeMinimunOrderValue
+				storeMinimunOrderValue,
+				storeDeliveryFee,
+				storeFreeDeliveryMinimum
 			) => {
 				const { storeId: currentStore, items } = get()
 
@@ -27,6 +31,8 @@ export const useCartStore = create<CartState>()(
 						storeName,
 						storeImage,
 						storeMinimunOrderValue,
+						storeDeliveryFee,
+						storeFreeDeliveryMinimum,
 					})
 					return
 				}
@@ -52,6 +58,8 @@ export const useCartStore = create<CartState>()(
 						storeName,
 						storeImage,
 						storeMinimunOrderValue,
+						storeDeliveryFee,
+						storeFreeDeliveryMinimum,
 					})
 				}
 			},
@@ -97,8 +105,10 @@ export const useCartStore = create<CartState>()(
 					items: state.items.filter(i => i.id !== id),
 				})),
 
-			totalPrice: () =>
-				get().items.reduce((total, item) => {
+			totalPrice: (includeDeliveryFee = true) => {
+				const { items, storeDeliveryFee, storeFreeDeliveryMinimum } = get()
+
+				const itemsTotal = items.reduce((total, item) => {
 					const basePrice = item.size
 						? item.size.discount_price ?? item.size.full_price
 						: item.discount_price ?? item.full_price
@@ -119,7 +129,21 @@ export const useCartStore = create<CartState>()(
 						(basePrice + extras + drinks + utensils) * item.quantity
 
 					return total + itemTotal
-				}, 0),
+				}, 0)
+
+				if (!includeDeliveryFee) {
+					return itemsTotal
+				}
+
+				if (
+					storeFreeDeliveryMinimum !== null &&
+					itemsTotal >= storeFreeDeliveryMinimum
+				) {
+					return itemsTotal
+				}
+
+				return itemsTotal + storeDeliveryFee
+			},
 		}),
 		{
 			name: '@cart',

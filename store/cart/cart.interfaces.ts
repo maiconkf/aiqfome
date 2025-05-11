@@ -28,16 +28,20 @@ export interface CartState {
 	storeName: string | null
 	storeImage: string | null
 	storeMinimunOrderValue: number
+	storeDeliveryFee: number
+	storeFreeDeliveryMinimum: number | null
 	addToCart: (
 		item: CartItem,
 		storeId: string,
 		storeName: string,
 		storeImage: string,
-		storeMinimunOrderValue: number
+		storeMinimunOrderValue: number,
+		storeDeliveryFee: number,
+		storeFreeDeliveryMinimum: number | null
 	) => void
 	increaseQuantity: (id: string) => void
 	decreaseQuantity: (id: string) => void
 	updateCartItem: (id: string, updatedItem: CartItem) => void
 	removeFromCart: (id: string) => void
-	totalPrice: () => number
+	totalPrice: (includeDeliveryFee?: boolean) => number
 }
