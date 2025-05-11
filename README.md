@@ -24,13 +24,14 @@ Usei **Tailwind CSS** no lugar do **Material UI** porque:
 - É **mais rápido** de usar durante o desenvolvimento
 - Dá mais **controle sobre o layout e os estilos**
 - Evita a criação de vários arquivos de CSS
-- As **classes prontas** ajudam a montar o visual da página
+- As **classes prontas** ajudam a montar o visual da página direto no HTML
 
 ## ✨ Funcionalidades Principais
 
 ### Validação de Pedido Mínimo
 
 - Bloqueia o pedido se o valor mínimo do restaurante não for atingido
+- Mostra ao usuário quanto ainda falta
 - Atualização em tempo real
 
 ### Redirecionamento Inteligente
@@ -38,7 +39,7 @@ Usei **Tailwind CSS** no lugar do **Material UI** porque:
 - Impede acesso a produtos de restaurantes fechados
 - Redireciona automaticamente para a página correta
 
-### Horário de Funcionamento
+### Horário de Funcionamento em Tempo Real
 
 - Mostra se o restaurante está aberto ou fechado com base no horário do servidor
 
@@ -56,3 +57,9 @@ npm install
 # Iniciar o projeto
 npm run dev
 ```
+
+## 🔎 Observação
+
+**Sugestão de produto para testar:**
+[https://aiqfome-maicon.netlify.app/estabelecimento/matsuri/produto/niguiri-item-2](https://aiqfome-maicon.netlify.app/estabelecimento/matsuri/produto/niguiri-item-2)
+Esse produto está com **dados mockados mais completos**, ideal para visualizar melhor as funcionalidades.
