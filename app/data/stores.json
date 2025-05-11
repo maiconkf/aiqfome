@@ -1,0 +1,64 @@
+{
+	"stores": [
+		{
+			"id": "matsuri",
+			"name": "Matsuri Concept",
+			"logo": "https://placehold.co/72/F37103/000",
+			"delivery_fee": 4.99,
+			"delivery_time": "30-40 min",
+			"distance_km": 5.2,
+			"free_delivery_minimum": 80.0,
+			"business_hours": {
+				"opening": "10:00",
+				"closing": "20:00"
+			},
+			"minimum_order_value": 15.0,
+			"rating": 4.7
+		},
+		{
+			"id": "subway",
+			"name": "Subway",
+			"logo": "https://placehold.co/72/0B8A43/FBC908",
+			"delivery_fee": 3.99,
+			"delivery_time": "25-35 min",
+			"distance_km": 3.5,
+			"free_delivery_minimum": null,
+			"business_hours": {
+				"opening": "09:00",
+				"closing": "22:00"
+			},
+			"minimum_order_value": 18.0,
+			"rating": 4.8
+		},
+		{
+			"id": "burger-king",
+			"logo": "https://placehold.co/72/FF8232/D62401",
+			"name": "Burger King",
+			"delivery_fee": 2.99,
+			"delivery_time": "35-45 min",
+			"distance_km": 3.9,
+			"free_delivery_minimum": null,
+			"business_hours": {
+				"opening": "09:00",
+				"closing": "23:59"
+			},
+			"minimum_order_value": 20.0,
+			"rating": 4.9
+		},
+		{
+			"id": "mcdonalds",
+			"name": "McDonald's",
+			"logo": "https://placehold.co/72/DB0006/FFBC0E",
+			"delivery_fee": null,
+			"delivery_time": "55-65 min",
+			"distance_km": 1.9,
+			"free_delivery_minimum": null,
+			"business_hours": {
+				"opening": "18:00",
+				"closing": "22:00"
+			},
+			"minimum_order_value": 40.0,
+			"rating": 5.0
+		}
+	]
+}

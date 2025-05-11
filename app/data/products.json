@@ -1,0 +1,443 @@
+{
+	"products": {
+		"matsuri": {
+			"name": "Matsuri",
+			"logo": "https://placehold.co/72x72/000/FFF",
+			"items": [
+				{
+					"name": "Niguiris",
+					"description": "Niguiris frescos e deliciosos",
+					"money_icon": true,
+					"flavors": [
+						{
+							"name": "Item 1",
+							"description": "Lorem Ipsum",
+							"vegetarian": true,
+							"spicy": false,
+							"sizes": null,
+							"full_price": 30.0,
+							"discount_price": 29.90,
+							"slug": "niguiri-item-1",
+							"image": "https://placehold.co/1920x195/000/FFF",
+							"utensils": [
+								{
+									"name": "Hashi",
+									"value": 0
+								},
+								{
+									"name": "Garfo e faca",
+									"value": 1.0
+								}
+							],
+							"isDrinkOrDessert": false
+						},
+						{
+							"name": "Item 2",
+							"description": "Lorem Ipsum 2",
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": [
+								{
+									"name": "Médio",
+									"full_price": 22.9,
+									"discount_price": 19.9
+								},
+								{
+									"name": "Grande",
+									"full_price": 30.0,
+									"discount_price": null
+								}
+							],
+							"slug": "niguiri-item-2",
+							"image": "https://placehold.co/1920x195/FCA/FFF",
+							"utensils": [
+								{
+									"name": "Hashi",
+									"value": 0
+								},
+								{
+									"name": "Garfo e faca",
+									"value": 1.0
+								}
+							],
+							"isDrinkOrDessert": false
+						}
+					]
+				},
+				{
+					"name": "Temakis",
+					"description": "Temakis frescos e deliciosos enrolados na hora",
+					"money_icon": false,
+					"flavors": [
+						{
+							"name": "Califórnia",
+							"description": "Lorem Ipsum",
+							"vegetarian": false,
+							"spicy": true,
+							"sizes": null,
+							"full_price": 25.0,
+							"discount_price": 20.90,
+							"slug": "temaki-california",
+							"image": "https://placehold.co/1920x195/0A2/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": false
+						},
+						{
+							"name": "Filadélfia",
+							"description": "Lorem Ipsum 2",
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": [
+								{
+									"name": "Médio",
+									"full_price": 22.9,
+									"discount_price": 19.9
+								}
+							],
+							"slug": "temaki-filadelfia",
+							"image": "https://placehold.co/1920x195/A1A/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": false
+						}
+					]
+				},
+				{
+					"name": "Ceviches",
+					"description": "Ceviches frescos e deliciosos",
+					"money_icon": true,
+					"flavors": [
+						{
+							"name": "Item 1",
+							"description": null,
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": [
+								{
+									"name": "Médio",
+									"full_price": 17.0,
+									"discount_price": 13.99
+								}
+							],
+							"slug": "ceviche-item-1",
+							"image": "https://placehold.co/1920x195/1DA/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": false
+						},
+						{
+							"name": "Item 2",
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": [
+								{
+									"name": "Médio",
+									"full_price": 22.9,
+									"discount_price": 19.9
+								}
+							],
+							"slug": "ceviche-item-2",
+							"image": "https://placehold.co/1920x195/53A/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": false
+						}
+					]
+				},
+				{
+					"name": "Bebidas",
+					"description": "Bebidas geladas",
+					"money_icon": false,
+					"flavors": [
+						{
+							"name": "Refrigerante Lata",
+							"description": "Lorem Ipsum",
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": null,
+							"full_price": 6.0,
+							"discount_price": null,
+							"slug": "refrigerante-lata",
+							"image": "https://placehold.co/1920x195/000/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": true
+						},
+						{
+							"name": "Água sem gás",
+							"description": "Lorem Ipsum 2",
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": null,
+							"full_price": 4.0,
+							"discount_price": null,
+							"slug": "agua-sem-gas",
+							"image": "https://placehold.co/1920x195/AAA/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": true
+						}
+					]
+				}
+			],
+			"sides": {
+				"required": true,
+				"limit": 2,
+				"options": [
+					{
+						"name": "Shoyu"
+					},
+					{
+						"name": "Gengibre"
+					},
+					{
+						"name": "Wasabi"
+					}
+				]
+			},
+			"extras": {
+				"limit": 2,
+				"options": [
+					{
+						"name": "Biscoito da sorte",
+						"value": 2.0
+					},
+					{
+						"name": "Rolinho primavera",
+						"value": 8.0
+					},
+					{
+						"name": "Guioza",
+						"value": 6.0
+					}
+				]
+			},
+			"drinks": {
+				"limit": null,
+				"options": [
+					{
+						"name": "Refrigerante Lata",
+						"value": 6.0
+					},
+					{
+						"name": "Água sem gás",
+						"value": 4.0
+					}
+				]
+			}
+		},
+		"subway": {
+			"name": "Subway",
+			"logo": "https://placehold.co/72x72/000/FFF",
+			"items": [
+				{
+					"name": "Sanduíches",
+					"description": "Sanduíches frescos e deliciosos",
+					"money_icon": true,
+					"flavors": [
+						{
+							"name": "Sanduíche 1",
+							"description": "Lorem Ipsum",
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": [
+								{
+									"name": "Médio",
+									"full_price": 17.0,
+									"discount_price": 13.99
+								}
+							],
+							"slug": "sanduiche-1",
+							"image": "https://placehold.co/1920x195/000/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": false
+						},
+						{
+							"name": "Sanduíche 2",
+							"description": "Lorem Ipsum",
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": [
+								{
+									"name": "Médio",
+									"full_price": 22.9,
+									"discount_price": 19.9
+								}
+							],
+							"slug": "sanduiche-2",
+							"image": "https://placehold.co/1920x195/000/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": false
+						}
+					]
+				},
+				{
+					"name": "Bebidas",
+					"description": "Bebidas geladas",
+					"money_icon": false,
+					"flavors": [
+						{
+							"name": "Refrigerante Lata",
+							"description": null,
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": null,
+							"full_price": 6.0,
+							"discount_price": null,
+							"slug": "refrigerante-lata",
+							"image": "https://placehold.co/1920x195/000/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": true
+						}
+					]
+				}
+			],
+			"sides": null,
+			"extras": null,
+			"drinks": {
+				"limit": null,
+				"options": [
+					{
+						"name": "Refrigerante Lata",
+						"value": 6.0
+					}
+				]
+			}
+		},
+		"mcdonalds": {
+			"name": "McDonald's",
+			"logo": "https://placehold.co/72x72/000/FFF",
+			"items": [
+				{
+					"name": "Lanches",
+					"description": "Lanches deliciosos e frescos",
+					"money_icon": true,
+					"flavors": [
+						{
+							"name": "Big Mac",
+							"description": "Dois hambúrgueres, alface, queijo, molho especial, cebola, picles, pão com gergelim",
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": null,
+							"slug": "big-mac",
+							"image": "https://placehold.co/1920x195/000/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": false,
+							"discount_price": null,
+							"full_price": 25.90
+						},
+						{
+							"name": "McChicken",
+							"description": "Filé de frango empanado, alface e maionese",
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": null,
+							"discount_price": 20.50,
+							"full_price": 25.90,
+							"slug": "mcchicken",
+							"image": "https://placehold.co/1920x195/000/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": false
+						}
+					]
+				},
+				{
+					"name": "Bebidas",
+					"description": "Bebidas geladas",
+					"money_icon": false,
+					"flavors": [
+						{
+							"name": "Refrigerante",
+							"description": null,
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": null,
+							"full_price": 8.90,
+							"discount_price": null,
+							"slug": "refrigerante",
+							"image": "https://placehold.co/1920x195/000/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": true
+						}
+					]
+				}
+			],
+			"sides": null,
+			"extras": null,
+			"drinks": {
+				"limit": null,
+				"options": [
+					{
+						"name": "Refrigerante",
+						"value": 8.90
+					}
+				]
+			}
+		},
+		"burger-king": {
+			"name": "Burger King",
+			"logo": "https://placehold.co/72x72/000/FFF",
+			"items": [
+				{
+					"name": "Lanches",
+					"description": "Lanches deliciosos e frescos",
+					"money_icon": true,
+					"flavors": [
+						{
+							"name": "Whopper",
+							"description": "Hambúrguer, alface, tomate, maionese, picles, cebola e pão com gergelim",
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": null,
+							"discount_price": 21.90,
+							"full_price": 23.90,
+							"slug": "whopper",
+							"image": "https://placehold.co/1920x195/000/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": false
+						},
+						{
+							"name": "Chicken Royale",
+							"description": "Filé de frango empanado, alface e maionese",
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": null,
+							"discount_price": 19.90,
+							"full_price": 21.90,
+							"slug": "chicken-royale",
+							"image": "https://placehold.co/1920x195/000/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": false
+						}
+					]
+				},
+				{
+					"name": "Bebidas",
+					"description": "Bebidas geladas",
+					"money_icon": false,
+					"flavors": [
+						{
+							"name": "Refrigerante",
+							"description": null,
+							"vegetarian": false,
+							"spicy": false,
+							"sizes": null,
+							"full_price": 8.90,
+							"discount_price": null,
+							"slug": "refrigerante",
+							"image": "https://placehold.co/1920x195/000/FFF",
+							"utensils": null,
+							"isDrinkOrDessert": true
+						}
+					]
+				}
+			],
+			"sides": null,
+			"extras": null,
+			"drinks": {
+				"limit": null,
+				"options": [
+					{
+						"name": "Refrigerante",
+						"value": 8.90
+					}
+				]
+			}
+		}
+	}
+}
