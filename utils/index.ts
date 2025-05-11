@@ -1,3 +1,10 @@
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
 export const formatPrice = (value: number) => {
 	return `R$ ${value.toFixed(2).replace('.', ',')}`
 }
@@ -25,8 +32,8 @@ export const isStoreClosed = (businessHours: {
 	opening: string
 	closing: string
 }): boolean => {
-	const now = new Date()
-	const currentTime = now.getHours() * 60 + now.getMinutes()
+	const now = dayjs().utc().tz('America/Sao_Paulo')
+	const currentTime = now.hour() * 60 + now.minute()
 
 	const [openingHour, openingMinute] = businessHours.opening
 		.split(':')
