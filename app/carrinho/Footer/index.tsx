@@ -17,7 +17,7 @@ export default function FooterCart() {
 					</div>
 					{storeMinimunOrderValue < totalPrice() ? (
 						<button
-							className="bg-[#7B1FA2] rounded-lg text-white text-sm font-bold px-10 py-3.5 cursor-pointer"
+							className="bg-[#7B1FA2] rounded-lg text-white text-sm font-bold px-10 py-3.5 cursor-pointer touch-manipulation"
 							onClick={() => alert('Página em construção')}
 						>
 							ir para pagamento
