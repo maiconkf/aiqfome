@@ -8,29 +8,34 @@ const nunito = Nunito({
 })
 
 export const metadata: Metadata = {
-	title: 'AIQFome',
+	title: 'aiqfome',
 	description: 'Sua plataforma de delivery favorita',
 	icons: {
 		icon: [
-			{ url: '/favicon.ico', sizes: 'any' },
-			{ url: '/icon.png', type: 'image/png', sizes: '32x32' },
-			{ url: '/icon-16.png', type: 'image/png', sizes: '16x16' },
+			{ url: '/favicon.ico', type: 'image/x-icon', sizes: '48x48' },
+			{ url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+			{ url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
 		],
 		apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
 		other: [
 			{
-				rel: 'mask-icon',
-				url: '/safari-pinned-tab.svg',
-				color: '#5bbad5',
+				rel: 'android-chrome',
+				url: '/android-chrome-192x192.png',
+				sizes: '192x192',
+			},
+			{
+				rel: 'android-chrome',
+				url: '/android-chrome-512x512.png',
+				sizes: '512x512',
 			},
 		],
 	},
 	manifest: '/manifest.json',
-	themeColor: '#ffffff',
+	themeColor: '#7B1FA2',
 	appleWebApp: {
 		capable: true,
 		statusBarStyle: 'default',
-		title: 'AIQFome',
+		title: 'aiqfome',
 	},
 }
 
