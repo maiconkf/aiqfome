@@ -135,7 +135,6 @@ export default function DrinksSection({
 									className="cursor-pointer p-0.5 disabled:opacity-50"
 									onClick={() => handleDecrease(drink)}
 									disabled={!canDecrease}
-									aria-label={`Diminuir ${drink.name}`}
 								>
 									<Image
 										src={`/icons/${
@@ -143,7 +142,7 @@ export default function DrinksSection({
 										}.svg`}
 										width={32}
 										height={32}
-										alt="Diminuir"
+										alt={`Diminuir ${drink.name}`}
 									/>
 								</button>
 								<p className="min-w-8 mx-1 text-center font-bold text-[#393A3C]">
@@ -153,13 +152,12 @@ export default function DrinksSection({
 									className="cursor-pointer p-0.5 disabled:opacity-50"
 									onClick={() => handleIncrease(drink)}
 									disabled={!canIncrease}
-									aria-label={`Adicionar ${drink.name}`}
 								>
 									<Image
 										src="/icons/add.svg"
 										width={32}
 										height={32}
-										alt="Adicionar"
+										alt={`Adicionar ${drink.name}`}
 									/>
 								</button>
 								<p className="text-sm font-semibold text-[#6D6F73] ml-2">
