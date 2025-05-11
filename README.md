@@ -28,6 +28,11 @@ Usei **Tailwind CSS** no lugar do **Material UI** porque:
 
 ## ✨ Funcionalidades Principais
 
+### Cálculo de Taxa de Entrega
+
+- A taxa de entrega é **incluída no valor total do pedido**
+- Se o pedido atingir o valor mínimo para **frete grátis**, o valor da taxa é automaticamente removido do cálculo
+
 ### Validação de Pedido Mínimo
 
 - Bloqueia o pedido se o valor mínimo do restaurante não for atingido
