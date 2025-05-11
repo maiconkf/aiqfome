@@ -10,7 +10,7 @@
 			"free_delivery_minimum": 80.0,
 			"business_hours": {
 				"opening": "10:00",
-				"closing": "20:00"
+				"closing": "22:00"
 			},
 			"minimum_order_value": 15.0,
 			"rating": 4.7
@@ -40,7 +40,7 @@
 			"free_delivery_minimum": null,
 			"business_hours": {
 				"opening": "09:00",
-				"closing": "23:59"
+				"closing": "12:00"
 			},
 			"minimum_order_value": 20.0,
 			"rating": 4.9
