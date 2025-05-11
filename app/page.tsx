@@ -5,11 +5,11 @@ import Stores from '@/components/Stores'
 export default function Home() {
 	return (
 		<Layout showSearch={true} showFooter={true}>
-			<main className="container mx-auto">
+			<div className="container mx-auto">
 				<hr className="text-white" />
 				<Banner />
 				<Stores />
-			</main>
+			</div>
 		</Layout>
 	)
 }

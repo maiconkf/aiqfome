@@ -7,7 +7,7 @@ export default function Layout({ showSearch, showFooter, children }: ILayout) {
 		<div className="h-full flex flex-col justify-between ">
 			<div>
 				<Header showSearch={showSearch} />
-				{children}
+				<main>{children}</main>
 			</div>
 			<Footer showFooter={showFooter} />
 		</div>

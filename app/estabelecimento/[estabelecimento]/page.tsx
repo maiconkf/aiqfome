@@ -50,7 +50,7 @@ export default function StorePage() {
 
 	return (
 		<Layout showSearch={false} showFooter={true}>
-			<main className="pb-19">
+			<div className="pb-19">
 				<div className="container mx-auto py-6 px-4 md:px-0">
 					<div className="flex items-center mb-2">
 						<Image
@@ -180,7 +180,7 @@ export default function StorePage() {
 				{items.map((item, idx) => (
 					<Menu key={idx} product={item} isStoreClosed={isClosed} />
 				))}
-			</main>
+			</div>
 		</Layout>
 	)
 }
