@@ -9,7 +9,7 @@
 			"distance_km": 5.2,
 			"free_delivery_minimum": 80.0,
 			"business_hours": {
-				"opening": "10:00",
+				"opening": "00:00",
 				"closing": "23:59"
 			},
 			"minimum_order_value": 15.0,
