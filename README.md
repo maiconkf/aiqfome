@@ -36,7 +36,7 @@ Usei **Tailwind CSS** no lugar do **Material UI** porque:
 ### Validação de Pedido Mínimo
 
 - Bloqueia o pedido se o valor mínimo do restaurante não for atingido
-- Mostra ao usuário quanto ainda falta
+- Mostra ao usuário um aviso sobre o valor mínimo do estabelecimento
 - Atualização em tempo real
 
 ### Redirecionamento Inteligente
