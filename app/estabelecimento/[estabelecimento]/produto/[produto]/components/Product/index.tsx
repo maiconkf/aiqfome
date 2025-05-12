@@ -1,6 +1,6 @@
-import { formatPrice } from '@/utils'
 import Image from 'next/image'
 import { IProductSection } from './product.interfaces'
+import { formatPrice } from '@/utils/price'
 
 export default function ProductSection({
 	image,

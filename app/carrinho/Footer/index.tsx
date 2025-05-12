@@ -1,6 +1,6 @@
 import ErrorMessage from '@/components/ErrorMessage'
 import { useCartStore } from '@/store/cart'
-import { formatPrice } from '@/utils'
+import { formatPrice } from '@/utils/price'
 
 export default function FooterCart() {
 	const { storeMinimunOrderValue, totalPrice } = useCartStore()

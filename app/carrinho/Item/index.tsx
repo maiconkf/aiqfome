@@ -1,10 +1,10 @@
-import { formatPrice } from '@/utils'
 import Image from 'next/image'
 import { IItem } from './item.interfaces'
 import { useRouter } from 'next/navigation'
 import { useCartStore } from '@/store/cart'
 import ItemTitle from './Title'
 import ItemDescription from './Description'
+import { formatPrice } from '@/utils/price'
 
 export default function ItemCart({ items }: IItem) {
 	const {

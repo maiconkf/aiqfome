@@ -1,8 +1,9 @@
-import { formatPrice, scrollToSession } from '@/utils'
 import { IExtrasSection } from './extras.interfaces'
 import { IExtraOption } from '@/app/estabelecimento/[estabelecimento]/estabelecimento.interfaces'
 import { useState } from 'react'
 import ErrorMessage from '@/components/ErrorMessage'
+import { scrollToSession } from '@/utils/scroll'
+import { formatPrice } from '@/utils/price'
 
 export default function ExtrasSection({
 	itemInCart,

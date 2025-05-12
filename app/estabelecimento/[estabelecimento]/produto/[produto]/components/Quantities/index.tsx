@@ -1,12 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { formatPrice } from '@/utils'
 import Image from 'next/image'
 import { useCartStore } from '@/store/cart'
 import { IQuantitiesSection } from './quantities.interfaces'
 import { useParams } from 'next/navigation'
 import { handleAddToCart } from '@/utils/cart'
+import { formatPrice } from '@/utils/price'
 
 export default function QuantitiesSection({
 	itemInCart,

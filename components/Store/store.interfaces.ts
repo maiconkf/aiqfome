@@ -1,3 +1,5 @@
+import { IBusinessHours } from '../Stores/stores.interfaces'
+
 export interface IStore {
 	id: string
 	name: string
@@ -6,10 +8,7 @@ export interface IStore {
 	delivery_time: string
 	distance_km: number
 	free_delivery_minimum: number | null
-	business_hours: {
-		opening: string
-		closing: string
-	}
+	business_hours: IBusinessHours
 	minimum_order_value: number | null
 	rating: number
 }

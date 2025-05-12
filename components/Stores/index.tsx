@@ -1,7 +1,7 @@
 import Store from '../Store'
 import storesData from '@/app/data/stores.json'
 import { IStore } from '../Store/store.interfaces'
-import { isStoreClosed } from '@/utils'
+import { isStoreClosed } from '@/utils/store'
 
 export default function Stores() {
 	const openStores = storesData.stores.filter(

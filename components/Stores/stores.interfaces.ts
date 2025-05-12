@@ -3,6 +3,11 @@ export interface ICategory {
 	name: string
 }
 
+export interface IBusinessHours {
+	opening: string
+	closing: string
+}
+
 export interface IStores {
 	id: string
 	name: string
@@ -10,10 +15,7 @@ export interface IStores {
 	delivery_time: string
 	distance_km: number
 	free_delivery_minimum: number | null
-	business_hours: {
-		opening: string
-		closing: string
-	}
+	business_hours: IBusinessHours
 	minimum_order_value: number | null
 	categories: ICategory[]
 }

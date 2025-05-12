@@ -22,8 +22,8 @@ import ExtrasSection from './components/Extras'
 import ObservationsSession from './components/Observations'
 import Link from 'next/link'
 import { CartItem } from '@/store/cart/cart.interfaces'
-import { isStoreClosed } from '@/utils'
 import LoadingSpinner from '@/components/LoadingSpinner'
+import { isStoreClosed } from '@/utils/store'
 
 export default function ProductPage() {
 	const { estabelecimento, produto } = useParams()

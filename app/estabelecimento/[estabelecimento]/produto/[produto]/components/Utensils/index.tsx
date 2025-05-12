@@ -1,9 +1,10 @@
-import { formatPrice, scrollToSession } from '@/utils'
 import { IUtensilsSession } from './utensils.interfaces'
 import { useCartStore } from '@/store/cart'
 import { IUtensil } from '@/app/estabelecimento/[estabelecimento]/estabelecimento.interfaces'
 import { useState } from 'react'
 import ErrorMessage from '@/components/ErrorMessage'
+import { scrollToSession } from '@/utils/scroll'
+import { formatPrice } from '@/utils/price'
 
 export default function UtensilsSession({
 	utensils,

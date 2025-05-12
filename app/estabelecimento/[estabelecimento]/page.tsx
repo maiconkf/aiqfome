@@ -6,8 +6,9 @@ import storesData from '@/app/data/stores.json'
 import { IStore } from '@/components/Store/store.interfaces'
 import Layout from '@/components/Layout'
 import Image from 'next/image'
-import { formatPrice, isStoreClosed } from '@/utils'
 import Menu from '@/components/Menu'
+import { formatPrice } from '@/utils/price'
+import { isStoreClosed } from '@/utils/store'
 
 export default function StorePage() {
 	const { estabelecimento } = useParams()

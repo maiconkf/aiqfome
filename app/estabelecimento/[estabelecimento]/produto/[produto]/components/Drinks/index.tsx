@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
-import { formatPrice } from '@/utils'
 import {
 	IDrinksSectionProps,
 	IDrinkWithQuantity,
@@ -8,6 +7,7 @@ import {
 } from './drinks.interfaces'
 import { IDrinkOption } from '@/app/estabelecimento/[estabelecimento]/estabelecimento.interfaces'
 import { useCartStore } from '@/store/cart'
+import { formatPrice } from '@/utils/price'
 
 export default function DrinksSection({
 	drinks,

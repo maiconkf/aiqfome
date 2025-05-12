@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import { formatPrice } from '@/utils'
 import { ISubmenu } from './submenu.interfaces'
+import { formatPrice } from '@/utils/price'
 
 export default function Submenu({ flavor }: ISubmenu) {
 	return (

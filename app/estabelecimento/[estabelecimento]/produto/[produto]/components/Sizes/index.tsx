@@ -1,8 +1,8 @@
 'use client'
 
-import { formatPrice } from '@/utils'
 import Image from 'next/image'
 import { ISizesSection } from './sizes.interfaces'
+import { formatPrice } from '@/utils/price'
 
 export default function SizesSection({
 	targetFlavor,

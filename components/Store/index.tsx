@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { IStoreProps } from './store.interfaces'
 import Link from 'next/link'
-import { formatPrice } from '@/utils'
+import { formatPrice } from '@/utils/price'
 
 export default function Store({ store, isClosed }: IStoreProps) {
 	const { delivery_fee, name, rating, logo, id } = store
