@@ -68,3 +68,11 @@ npm run dev
 **Sugestão de produto para testar:**
 [https://aiqfome-maicon.netlify.app/estabelecimento/matsuri/produto/niguiri-item-2](https://aiqfome-maicon.netlify.app/estabelecimento/matsuri/produto/niguiri-item-2)
 Esse produto está com **dados mockados mais completos**, ideal para visualizar melhor as funcionalidades.
+
+## ℹ️ Detalhe Técnico
+
+**Cálculo ao adicionar mais de 1 item do mesmo produto:**
+O valor total do produto é calculado da seguinte forma:
+**`(basePrice * quantidade) + extras + bebidas + utensílios`**
+
+> Ou seja, os adicionais (como extras, bebidas e utensílios) **não são multiplicados pela quantidade**, apenas o preço base do item.
