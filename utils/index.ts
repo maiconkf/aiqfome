@@ -33,7 +33,6 @@ export const isStoreClosed = (businessHours: {
 	closing: string
 }): boolean => {
 	const now = dayjs().utc().tz('America/Sao_Paulo')
-	console.log('now', now)
 	const currentTime = now.hour() * 60 + now.minute()
 
 	const [openingHour, openingMinute] = businessHours.opening
