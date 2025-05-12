@@ -1,5 +1,5 @@
 import { IDrinkOption } from '@/app/estabelecimento/[estabelecimento]/estabelecimento.interfaces'
-import { CartItem } from '@/store/cart/cart.interfaces'
+import { ICartItem } from '@/store/cart/cart.interfaces'
 
 export interface IDrinksSectionProps {
 	drinks: {
@@ -7,7 +7,7 @@ export interface IDrinksSectionProps {
 		options: IDrinkOption[]
 	}
 	initialDrinks?: IDrinkWithQuantity[]
-	itemInCart?: CartItem
+	itemInCart?: ICartItem
 }
 
 export interface IQuantities {

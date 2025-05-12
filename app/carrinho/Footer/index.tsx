@@ -3,7 +3,8 @@ import { useCartStore } from '@/store/cart'
 import { formatPrice } from '@/utils/price'
 
 export default function FooterCart() {
-	const { storeMinimunOrderValue, totalPrice } = useCartStore()
+	const { store, totalPrice } = useCartStore()
+	const minOrderValue = store ? store.minimun_order_value : 0
 
 	return (
 		<footer className="fixed bottom-0 left-0 w-full p-4 shadow-[0_0_15px_0_rgba(0,0,0,0.15)] bg-white rounded-tl-xl rounded-tr-xl">
@@ -15,7 +16,7 @@ export default function FooterCart() {
 							{formatPrice(totalPrice())}
 						</p>
 					</div>
-					{storeMinimunOrderValue <= totalPrice(false) ? (
+					{minOrderValue <= totalPrice(false) ? (
 						<button
 							className="bg-[#7B1FA2] rounded-lg text-white text-sm font-bold px-10 py-3.5 cursor-pointer touch-manipulation"
 							onClick={() => alert('Página em construção')}
@@ -25,7 +26,7 @@ export default function FooterCart() {
 					) : (
 						<ErrorMessage
 							error={`O valor mínimo do pedido deve ser de ${formatPrice(
-								storeMinimunOrderValue
+								minOrderValue
 							)}`}
 						/>
 					)}

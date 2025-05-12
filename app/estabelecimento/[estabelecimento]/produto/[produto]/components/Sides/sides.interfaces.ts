@@ -3,11 +3,11 @@ import {
 	IFlavorSize,
 	ISideOption,
 } from '@/app/estabelecimento/[estabelecimento]/estabelecimento.interfaces'
-import { CartItem } from '@/store/cart/cart.interfaces'
+import { ICartItem } from '@/store/cart/cart.interfaces'
 import { Dispatch, SetStateAction } from 'react'
 
 export interface ISides {
-	itemInCart: CartItem | undefined
+	itemInCart: ICartItem | undefined
 	sides: ISidesObject
 	selectedSize: IFlavorSize | null
 	selectedSides: ISideOption[]
@@ -20,7 +20,7 @@ export interface ISides {
 	quantity: number
 	setQuantity: (value: number) => void
 	setSelectedSides: Dispatch<SetStateAction<ISideOption[]>>
-	updateCartItem: (id: string, item: CartItem) => void
+	updateCartItem: (id: string, item: ICartItem) => void
 	setSidesError: (msg: string) => void
 }
 

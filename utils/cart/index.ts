@@ -41,11 +41,13 @@ export const handleAddToCart = ({
 			discount_price,
 			full_price,
 		},
-		storeId,
-		storeName,
-		storeImage,
-		storeMinimunOrderValue,
-		storeDeliveryFee,
-		storeFreeDeliveryMinimum
+		{
+			id: storeId,
+			name: storeName,
+			image: storeImage,
+			minimun_order_value: storeMinimunOrderValue,
+			delivery_fee: storeDeliveryFee,
+			free_delivery_minimun: storeFreeDeliveryMinimum,
+		}
 	)
 }

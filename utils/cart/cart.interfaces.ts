@@ -3,7 +3,7 @@ import {
 	IFlavorSize,
 	ISideOption,
 } from '@/app/estabelecimento/[estabelecimento]/estabelecimento.interfaces'
-import { CartItem } from '@/store/cart/cart.interfaces'
+import { ICartItem, IStoreItem } from '@/store/cart/cart.interfaces'
 
 export interface IHandleAddToCart {
 	targetFlavor?: IFlavor | null
@@ -17,13 +17,5 @@ export interface IHandleAddToCart {
 	produto: string
 	storeId: string
 	quantity?: number
-	addToCart: (
-		item: CartItem,
-		storeId: string,
-		storeName: string,
-		storeImage: string,
-		storeMinimunOrderValue: number,
-		storeDeliveryFee: number,
-		storeFreeDeliveryMinimum: number | null
-	) => void
+	addToCart: (item: ICartItem, store: IStoreItem) => void
 }

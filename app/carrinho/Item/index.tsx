@@ -11,9 +11,8 @@ export default function ItemCart({ items }: IItem) {
 		decreaseQuantity,
 		increaseQuantity,
 		removeFromCart,
-		storeDeliveryFee,
+		store,
 		totalPrice,
-		storeFreeDeliveryMinimum,
 	} = useCartStore()
 	const router = useRouter()
 
@@ -159,9 +158,10 @@ export default function ItemCart({ items }: IItem) {
 						</div>
 					)}
 					{idx === items.length - 1 &&
-						storeDeliveryFee > 0 &&
-						(!storeFreeDeliveryMinimum ||
-							totalPrice(false) <= storeFreeDeliveryMinimum) && (
+						store &&
+						store.delivery_fee > 0 &&
+						(!store.free_delivery_minimun ||
+							totalPrice(false) <= store.free_delivery_minimun) && (
 							<div className="mt-1.5">
 								<ItemTitle title="frete" />
 
@@ -171,7 +171,7 @@ export default function ItemCart({ items }: IItem) {
 										hasMr3={true}
 									/>
 									<p className="font-bold text-xs text-[#00A296]">
-										{formatPrice(storeDeliveryFee)}
+										{formatPrice(store.delivery_fee)}
 									</p>
 								</div>
 							</div>

@@ -7,7 +7,7 @@ import {
 } from '@/app/estabelecimento/[estabelecimento]/estabelecimento.interfaces'
 import { IDrinkWithQuantity } from '@/app/estabelecimento/[estabelecimento]/produto/[produto]/components/Drinks/drinks.interfaces'
 
-export interface CartItem {
+export interface ICartItem {
 	id: string
 	quantity: number
 	flavor?: IFlavor | null
@@ -22,26 +22,22 @@ export interface CartItem {
 	full_price: number
 }
 
-export interface CartState {
-	items: CartItem[]
-	storeId: string | null
-	storeName: string | null
-	storeImage: string | null
-	storeMinimunOrderValue: number
-	storeDeliveryFee: number
-	storeFreeDeliveryMinimum: number | null
-	addToCart: (
-		item: CartItem,
-		storeId: string,
-		storeName: string,
-		storeImage: string,
-		storeMinimunOrderValue: number,
-		storeDeliveryFee: number,
-		storeFreeDeliveryMinimum: number | null
-	) => void
+export interface IStoreItem {
+	id: string | null
+	name: string | null
+	image: string | null
+	minimun_order_value: number
+	delivery_fee: number
+	free_delivery_minimun: number | null
+}
+
+export interface ICartState {
+	items: ICartItem[]
+	store: IStoreItem | null
+	addToCart: (item: ICartItem, store: IStoreItem) => void
 	increaseQuantity: (id: string) => void
 	decreaseQuantity: (id: string) => void
-	updateCartItem: (id: string, updatedItem: CartItem) => void
+	updateCartItem: (id: string, updatedItem: ICartItem) => void
 	removeFromCart: (id: string) => void
 	totalPrice: (includeDeliveryFee?: boolean) => number
 }

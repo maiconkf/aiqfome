@@ -1,38 +1,20 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { CartItem, CartState } from './cart.interfaces'
+import { ICartItem, ICartState } from './cart.interfaces'
 
-export const useCartStore = create<CartState>()(
+export const useCartStore = create<ICartState>()(
 	persist(
 		(set, get) => ({
 			items: [],
-			storeId: null,
-			storeName: null,
-			storeImage: null,
-			storeMinimunOrderValue: 0,
-			storeDeliveryFee: 0,
-			storeFreeDeliveryMinimum: null,
+			store: null,
 
-			addToCart: (
-				newItem,
-				storeId,
-				storeName,
-				storeImage,
-				storeMinimunOrderValue,
-				storeDeliveryFee,
-				storeFreeDeliveryMinimum
-			) => {
-				const { storeId: currentStore, items } = get()
+			addToCart: (newItem, newStore) => {
+				const { store: currentStore, items } = get()
 
-				if (currentStore && currentStore !== storeId) {
+				if (currentStore && currentStore.id !== newStore.id) {
 					set({
 						items: [newItem],
-						storeId,
-						storeName,
-						storeImage,
-						storeMinimunOrderValue,
-						storeDeliveryFee,
-						storeFreeDeliveryMinimum,
+						store: newStore,
 					})
 					return
 				}
@@ -54,12 +36,7 @@ export const useCartStore = create<CartState>()(
 				} else {
 					set({
 						items: [...items, newItem],
-						storeId,
-						storeName,
-						storeImage,
-						storeMinimunOrderValue,
-						storeDeliveryFee,
-						storeFreeDeliveryMinimum,
+						store: newStore,
 					})
 				}
 			},
@@ -92,7 +69,7 @@ export const useCartStore = create<CartState>()(
 				})
 			},
 
-			updateCartItem: (itemId: string, updatedItem: CartItem) => {
+			updateCartItem: (itemId: string, updatedItem: ICartItem) => {
 				set(state => ({
 					items: state.items.map(item =>
 						item.id === itemId ? updatedItem : item
@@ -106,7 +83,7 @@ export const useCartStore = create<CartState>()(
 				})),
 
 			totalPrice: (includeDeliveryFee = true) => {
-				const { items, storeDeliveryFee, storeFreeDeliveryMinimum } = get()
+				const { items, store } = get()
 
 				const itemsTotal = items.reduce((total, item) => {
 					const basePrice = item.size
@@ -136,13 +113,14 @@ export const useCartStore = create<CartState>()(
 				}
 
 				if (
-					storeFreeDeliveryMinimum !== null &&
-					itemsTotal >= storeFreeDeliveryMinimum
+					store &&
+					store.free_delivery_minimun !== null &&
+					itemsTotal >= store.free_delivery_minimun
 				) {
 					return itemsTotal
 				}
 
-				return itemsTotal + storeDeliveryFee
+				return itemsTotal + (store?.delivery_fee ?? 0)
 			},
 		}),
 		{

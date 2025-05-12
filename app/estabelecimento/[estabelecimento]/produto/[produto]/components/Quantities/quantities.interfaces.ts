@@ -3,11 +3,11 @@ import {
 	IFlavorSize,
 	ISideOption,
 } from '@/app/estabelecimento/[estabelecimento]/estabelecimento.interfaces'
-import { CartItem } from '@/store/cart/cart.interfaces'
+import { ICartItem } from '@/store/cart/cart.interfaces'
 import { ISidesObject } from '../Sides/sides.interfaces'
 
 export interface IQuantitiesSection {
-	itemInCart?: CartItem
+	itemInCart?: ICartItem
 	targetFlavor?: IFlavor
 	selectedSize?: IFlavorSize | null
 	selectedSides: ISideOption[]

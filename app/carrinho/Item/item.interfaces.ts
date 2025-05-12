@@ -1,5 +1,5 @@
-import { CartItem } from '@/store/cart/cart.interfaces'
+import { ICartItem } from '@/store/cart/cart.interfaces'
 
 export interface IItem {
-	items: CartItem[]
+	items: ICartItem[]
 }

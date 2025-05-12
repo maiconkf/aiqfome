@@ -21,7 +21,7 @@ import UtensilsSession from './components/Utensils'
 import ExtrasSection from './components/Extras'
 import ObservationsSession from './components/Observations'
 import Link from 'next/link'
-import { CartItem } from '@/store/cart/cart.interfaces'
+import { ICartItem } from '@/store/cart/cart.interfaces'
 import LoadingSpinner from '@/components/LoadingSpinner'
 import { isStoreClosed } from '@/utils/store'
 
@@ -50,7 +50,7 @@ export default function ProductPage() {
 	const [targetFlavor, setTargetFlavor] = useState<IFlavor | undefined>(
 		undefined
 	)
-	const [itemInCart, setItemInCart] = useState<CartItem | undefined>(undefined)
+	const [itemInCart, setItemInCart] = useState<ICartItem | undefined>(undefined)
 	const [selectedSides, setSelectedSides] = useState<ISideOption[]>([])
 	const [sidesError, setSidesError] = useState<string>('')
 	const [selectedExtras, setSelectedExtras] = useState<IExtraOption[]>([])
@@ -76,7 +76,7 @@ export default function ProductPage() {
 		if (!targetFlavor) return
 
 		const foundItemInCart = items.find(
-			(item: CartItem) => item?.flavor?.slug === targetFlavor.slug
+			(item: ICartItem) => item?.flavor?.slug === targetFlavor.slug
 		)
 
 		if (JSON.stringify(foundItemInCart) !== JSON.stringify(itemInCart)) {
