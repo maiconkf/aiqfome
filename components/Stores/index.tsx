@@ -8,9 +8,13 @@ export default function Stores() {
 		(store: IStore) => !isStoreClosed(store.business_hours)
 	)
 
+	console.log('openStores', openStores)
+
 	const closedStores = storesData.stores.filter((store: IStore) =>
 		isStoreClosed(store.business_hours)
 	)
+
+	console.log('closedStores', closedStores)
 
 	return (
 		<section className="py-6 px-4 xl:px-0">
