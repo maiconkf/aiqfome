@@ -10,7 +10,7 @@ import { IDrinkWithQuantity } from '@/app/estabelecimento/[estabelecimento]/prod
 export interface CartItem {
 	id: string
 	quantity: number
-	flavor: IFlavor | undefined
+	flavor?: IFlavor | null
 	size?: IFlavorSize
 	utensils?: IUtensil
 	sides?: ISideOption[]

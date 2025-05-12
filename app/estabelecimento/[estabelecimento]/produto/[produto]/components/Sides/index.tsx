@@ -1,77 +1,105 @@
 'use client'
 
 import { ISideOption } from '@/app/estabelecimento/[estabelecimento]/estabelecimento.interfaces'
-import { useCallback } from 'react'
 import { ISides } from './sides.interfaces'
-import { useCartStore } from '@/store/cart'
 import ErrorMessage from '@/components/ErrorMessage'
+import { handleAddToCart } from '@/utils/cart'
+import { useCartStore } from '@/store/cart'
+import { useEffect } from 'react'
 
 export default function SidesSection({
 	itemInCart,
 	sides,
+	selectedSize,
 	selectedSides,
 	sidesError,
+	estabelecimento,
+	produto,
+	storeId,
+	isDrinkOrDessert,
+	targetFlavor,
+	quantity,
+	setQuantity,
 	setSelectedSides,
 	updateCartItem,
 	setSidesError,
 }: ISides) {
-	const { removeFromCart } = useCartStore()
+	const { addToCart, removeFromCart } = useCartStore()
 
-	const handleSideSelection = useCallback(
-		(side: ISideOption) => {
-			setSelectedSides((prevSides: ISideOption[]) => {
-				const sideIndex = prevSides.findIndex(s => s.name === side.name)
-				let newSelectedSides: ISideOption[]
-
-				if (sideIndex !== -1) {
-					newSelectedSides = [...prevSides]
-					newSelectedSides.splice(sideIndex, 1)
-
-					if (itemInCart) {
-						if (newSelectedSides.length === 0) {
-							removeFromCart(itemInCart.id)
-						} else {
-							updateCartItem(itemInCart.id, {
-								...itemInCart,
-								sides: newSelectedSides,
-							})
-						}
-					}
-
-					setSidesError('')
-				} else {
-					if (prevSides.length < sides.limit) {
-						newSelectedSides = [...prevSides, side]
-
-						if (itemInCart) {
-							updateCartItem(itemInCart.id, {
-								...itemInCart,
-								sides: newSelectedSides,
-							})
-						}
-
-						setSidesError('')
-					} else {
-						setSidesError(
-							`Você pode selecionar no máximo ${sides.limit} acompanhamentos.`
-						)
-						setTimeout(() => setSidesError(''), 3000)
-						return prevSides
-					}
-				}
-
-				return newSelectedSides
+	useEffect(() => {
+		console.log('quantity', quantity)
+		if (selectedSides.length > 0 && !itemInCart && quantity > 0) {
+			handleAddToCart({
+				targetFlavor,
+				selectedSize,
+				selectedSides,
+				sides,
+				estabelecimento: estabelecimento as string,
+				produto: produto as string,
+				storeId,
+				isDrinkOrDessert,
+				quantity,
+				addToCart,
 			})
-		},
-		[
-			itemInCart,
-			removeFromCart,
-			sides.limit,
-			updateCartItem,
-			setSidesError,
-			setSelectedSides,
-		]
-	)
+		}
+	}, [
+		addToCart,
+		estabelecimento,
+		isDrinkOrDessert,
+		itemInCart,
+		produto,
+		quantity,
+		selectedSides,
+		selectedSize,
+		sides,
+		storeId,
+		targetFlavor,
+	])
+
+	useEffect(() => {
+		if (!itemInCart) return
+
+		updateCartItem(itemInCart.id, {
+			...itemInCart,
+			sides: selectedSides,
+		})
+
+		if (
+			!itemInCart.sides ||
+			(itemInCart.sides &&
+				Array.isArray(itemInCart.sides) &&
+				itemInCart.sides.length === 0)
+		) {
+			setQuantity(quantity)
+			removeFromCart(itemInCart.id)
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [itemInCart, removeFromCart, selectedSides, setQuantity, updateCartItem])
+
+	const handleSideSelection = (side: ISideOption) => {
+		setSelectedSides(prevSides => {
+			const sideIndex = prevSides.findIndex(s => s.name === side.name)
+
+			if (sideIndex !== -1) {
+				const newSides = [...prevSides]
+				newSides.splice(sideIndex, 1)
+				setSidesError('')
+				return newSides
+			}
+
+			if (prevSides.length < sides.limit) {
+				const newSides = [...prevSides, side]
+				setSidesError('')
+				return newSides
+			}
+
+			setSidesError(
+				`Você pode selecionar no máximo ${sides.limit} acompanhamentos.`
+			)
+			setTimeout(() => setSidesError(''), 3000)
+			return prevSides
+		})
+	}
 
 	return (
 		<section
@@ -111,11 +139,7 @@ export default function SidesSection({
 										type="checkbox"
 										className="w-4 h-4 my-1 ml-1 mr-3"
 										checked={isSelected}
-										onChange={e => {
-											e.stopPropagation()
-											handleSideSelection(side)
-										}}
-										onClick={e => e.stopPropagation()}
+										onChange={e => e.stopPropagation()}
 									/>
 									<p className="text-sm text-[#6D6F73]">{side.name}</p>
 								</div>

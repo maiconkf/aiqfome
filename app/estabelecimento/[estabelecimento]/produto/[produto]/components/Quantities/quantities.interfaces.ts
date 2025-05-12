@@ -14,5 +14,7 @@ export interface IQuantitiesSection {
 	sides: ISidesObject | null
 	storeId: string
 	isDrinkOrDessert: boolean
-	setSidesError: (msg: string) => void
+	quantity: number
+	setQuantity: (quantity: number) => void
+	setSelectedSides: (sides: ISideOption[]) => void
 }

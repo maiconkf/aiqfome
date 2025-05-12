@@ -54,6 +54,7 @@ export default function ProductPage() {
 	const [selectedSides, setSelectedSides] = useState<ISideOption[]>([])
 	const [sidesError, setSidesError] = useState<string>('')
 	const [selectedExtras, setSelectedExtras] = useState<IExtraOption[]>([])
+	const [quantity, setQuantity] = useState(1)
 
 	useEffect(() => {
 		if (!estabelecimento || !produto || !storeData) return
@@ -132,7 +133,7 @@ export default function ProductPage() {
 	if (!storeData) {
 		return (
 			<Layout showSearch={false} showFooter={true}>
-				<div className="container mx-auto py-4">
+				<div className="container mx-auto py-4 px-4 sm:px-0">
 					<h1>Estabelecimento não encontrado</h1>
 				</div>
 			</Layout>
@@ -142,7 +143,7 @@ export default function ProductPage() {
 	if (!targetFlavor) {
 		return (
 			<Layout showSearch={false} showFooter={true}>
-				<div className="container mx-auto py-4">
+				<div className="container mx-auto py-4 px-4 sm:px-0">
 					<h1>Produto não encontrado</h1>
 				</div>
 			</Layout>
@@ -187,13 +188,15 @@ export default function ProductPage() {
 			/>
 			<QuantitiesSection
 				selectedSides={selectedSides}
-				sides={sides}
 				storeId={storeId}
 				itemInCart={itemInCart}
 				selectedSize={selectedSize}
 				targetFlavor={targetFlavor}
 				isDrinkOrDessert={isDrinkOrDessert}
-				setSidesError={setSidesError}
+				sides={sides}
+				quantity={quantity}
+				setQuantity={setQuantity}
+				setSelectedSides={setSelectedSides}
 			/>
 			{sizes && !isDrinkOrDessert && (
 				<SizesSection
@@ -204,6 +207,7 @@ export default function ProductPage() {
 			)}
 			{sides && !isDrinkOrDessert && (
 				<SidesSection
+					targetFlavor={targetFlavor}
 					sides={sides}
 					selectedSides={selectedSides}
 					setSelectedSides={setSelectedSides}
@@ -211,6 +215,13 @@ export default function ProductPage() {
 					updateCartItem={updateCartItem}
 					setSidesError={setSidesError}
 					sidesError={sidesError}
+					estabelecimento={estabelecimento as string}
+					produto={produto as string}
+					isDrinkOrDessert={isDrinkOrDessert}
+					storeId={storeId}
+					quantity={quantity}
+					setQuantity={setQuantity}
+					selectedSize={selectedSize}
 				/>
 			)}
 			{drinks && !isDrinkOrDessert && (
@@ -242,7 +253,10 @@ export default function ProductPage() {
 				/>
 			)}
 			<ObservationsSession itemInCart={itemInCart} />
-			{itemInCart && (
+			{(!sides ||
+				!sides.required ||
+				(selectedSides.length > 0 && quantity > 0) ||
+				(itemInCart && (itemInCart.sides || isDrinkOrDessert))) && (
 				<Link
 					href="/carrinho"
 					className="bg-[#7B1FA2] rounded-lg w-full max-w-[342px] h-[48px] fixed bottom-4 left-1/2 -translate-x-1/2 text-center leading-[48px] text-white font-bold"

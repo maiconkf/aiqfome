@@ -1,52 +1,44 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { formatPrice, scrollToSession } from '@/utils'
+import { formatPrice } from '@/utils'
 import Image from 'next/image'
-import { v4 as uuidv4 } from 'uuid'
 import { useCartStore } from '@/store/cart'
 import { IQuantitiesSection } from './quantities.interfaces'
 import { useParams } from 'next/navigation'
-import storesData from '@/app/data/stores.json'
+import { handleAddToCart } from '@/utils/cart'
 
 export default function QuantitiesSection({
 	itemInCart,
 	selectedSides,
 	selectedSize,
 	targetFlavor,
-	sides,
 	storeId,
 	isDrinkOrDessert,
-	setSidesError,
+	sides,
+	quantity,
+	setSelectedSides,
+	setQuantity,
 }: IQuantitiesSection) {
 	const { addToCart, decreaseQuantity, increaseQuantity, removeFromCart } =
 		useCartStore()
 	const { estabelecimento, produto } = useParams()
 
-	const [quantity, setQuantity] = useState(1)
 	const [showAddButton, setShowAddButton] = useState(true)
 
 	useEffect(() => {
+		console.log(itemInCart)
 		if (itemInCart) {
 			setShowAddButton(false)
 			setQuantity(itemInCart.quantity)
-		} else {
-			setShowAddButton(true)
-			setQuantity(1)
-		}
-	}, [itemInCart])
-
-	useEffect(() => {
-		if (!targetFlavor) return
-
-		if (itemInCart) {
+		} else if (quantity > 0 && !showAddButton) {
 			setShowAddButton(false)
-			setQuantity(itemInCart.quantity)
 		} else {
 			setShowAddButton(true)
-			setQuantity(1)
+			setQuantity(isDrinkOrDessert ? 1 : 0)
 		}
-	}, [targetFlavor, itemInCart])
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [itemInCart, setQuantity])
 
 	const getUnitPrice = () => {
 		if (selectedSize)
@@ -55,7 +47,8 @@ export default function QuantitiesSection({
 	}
 
 	const calculateTotalPrice = () => {
-		const unitPrice = getUnitPrice() * quantity
+		const minQuantity = quantity === 0 ? 1 : quantity
+		const unitPrice = getUnitPrice() * minQuantity
 
 		const drinksTotal =
 			itemInCart?.drinks?.reduce((acc, drink) => {
@@ -73,53 +66,44 @@ export default function QuantitiesSection({
 	}
 
 	const handleAdd = () => {
-		if (sides?.required && selectedSides.length === 0 && !isDrinkOrDessert) {
-			scrollToSession('sides-section')
-
-			setSidesError(`Selecione ao menos 1 acompanhamento.`)
-
-			return
-		}
-
+		setQuantity(1)
 		setShowAddButton(false)
 
-		const itemId = `${targetFlavor?.slug}-${uuidv4()}`
-		const product_url = `/estabelecimento/${estabelecimento}/produto/${produto}`
-
-		const discount_price =
-			selectedSize?.discount_price ?? targetFlavor?.discount_price ?? null
-		const full_price = selectedSize?.full_price ?? targetFlavor?.full_price ?? 0
-
-		const storeData = storesData.stores.find(store => store.id === storeId)
-		const storeName = storeData?.name ?? ''
-		const storeImage = storeData?.logo ?? ''
-		const storeMinimunOrderValue = storeData?.minimum_order_value ?? 0
-		const storeDeliveryFee = storeData?.delivery_fee ?? 0
-		const storeFreeDeliveryMinimum = storeData?.free_delivery_minimum ?? null
-
-		addToCart(
-			{
-				id: itemId,
-				flavor: targetFlavor,
-				quantity: 1,
-				size: selectedSize ?? undefined,
-				sides: selectedSides.length > 0 ? selectedSides : undefined,
-				product_url,
-				discount_price,
-				full_price,
-			},
+		handleAddToCart({
+			targetFlavor,
+			selectedSize,
+			selectedSides,
+			sides,
+			isDrinkOrDessert,
+			estabelecimento: estabelecimento as string,
+			produto: produto as string,
 			storeId,
-			storeName,
-			storeImage,
-			storeMinimunOrderValue,
-			storeDeliveryFee,
-			storeFreeDeliveryMinimum
-		)
+			quantity,
+			addToCart,
+		})
 	}
 
-	const handleIncrease = () => itemInCart && increaseQuantity(itemInCart.id)
-	const handleDecrease = () => itemInCart && decreaseQuantity(itemInCart.id)
-	const handleRemoveFromCart = () => itemInCart && removeFromCart(itemInCart.id)
+	const handleIncrease = () => {
+		if (itemInCart) increaseQuantity(itemInCart.id)
+		else setQuantity(quantity + 1)
+	}
+
+	const handleDecrease = () => {
+		if (itemInCart) decreaseQuantity(itemInCart.id)
+		else setQuantity(quantity - 1)
+	}
+
+	const handleRemoveFromCart = () => {
+		if (itemInCart) {
+			removeFromCart(itemInCart.id)
+			setSelectedSides([])
+			setShowAddButton(true)
+		} else {
+			setQuantity(0)
+		}
+
+		setShowAddButton(true)
+	}
 
 	return (
 		<section className="mt-2 border-solid border-[#EEF0F5] border-b-4">
@@ -141,46 +125,47 @@ export default function QuantitiesSection({
 						adicionar
 					</button>
 				) : (
-					itemInCart && (
-						<div className="flex items-center">
-							{itemInCart.quantity > 1 ? (
-								<button
-									className="cursor-pointer p-0.5"
-									onClick={handleDecrease}
-								>
-									<Image
-										src="/icons/decrease.svg"
-										width={32}
-										height={32}
-										alt="Diminuir"
-									/>
-								</button>
-							) : (
-								<button
-									className="cursor-pointer p-1.75"
-									onClick={handleRemoveFromCart}
-								>
-									<Image
-										src="/icons/trash.svg"
-										width={22}
-										height={23}
-										alt="Remover"
-									/>
-								</button>
-							)}
-							<p className="min-w-8 mx-1 text-center font-bold text-[#393A3C]">
-								{itemInCart.quantity}
-							</p>
-							<button className="cursor-pointer p-0.5" onClick={handleIncrease}>
+					<div className="flex items-center">
+						{(itemInCart && itemInCart.quantity > 1) || quantity > 1 ? (
+							<button
+								className="cursor-pointer p-0.5 touch-manipulation"
+								onClick={handleDecrease}
+							>
 								<Image
-									src="/icons/add.svg"
+									src="/icons/decrease.svg"
 									width={32}
 									height={32}
-									alt="Adicionar"
+									alt="Diminuir"
 								/>
 							</button>
-						</div>
-					)
+						) : (
+							<button
+								className="cursor-pointer p-1.75 touch-manipulation"
+								onClick={handleRemoveFromCart}
+							>
+								<Image
+									src="/icons/trash.svg"
+									width={22}
+									height={23}
+									alt="Remover"
+								/>
+							</button>
+						)}
+						<p className="min-w-8 mx-1 text-center font-bold text-[#393A3C]">
+							{itemInCart ? itemInCart.quantity : quantity}
+						</p>
+						<button
+							className="cursor-pointer p-0.5 touch-manipulation"
+							onClick={handleIncrease}
+						>
+							<Image
+								src="/icons/add.svg"
+								width={32}
+								height={32}
+								alt="Adicionar"
+							/>
+						</button>
+					</div>
 				)}
 			</div>
 		</section>

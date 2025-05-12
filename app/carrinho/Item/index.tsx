@@ -42,7 +42,7 @@ export default function ItemCart({ items }: IItem) {
 					</div>
 					<div className="flex justify-end items-center mt-2">
 						<button
-							className="flex items-center cursor-pointer px-1 py-2"
+							className="flex items-center cursor-pointer px-1 py-2 touch-manipulation"
 							onClick={() => router.push(item.product_url ?? '#')}
 						>
 							<Image
@@ -58,7 +58,7 @@ export default function ItemCart({ items }: IItem) {
 						<div className="flex items-center ml-6.5 -mr-0.75">
 							{item.quantity > 1 ? (
 								<button
-									className="cursor-pointer px-0.5 py-0.75 h-[38]"
+									className="cursor-pointer px-0.5 py-0.75 h-[38] touch-manipulation"
 									onClick={() => decreaseQuantity(item.id)}
 								>
 									<Image
@@ -70,7 +70,7 @@ export default function ItemCart({ items }: IItem) {
 								</button>
 							) : (
 								<button
-									className="cursor-pointer p-1.75 h-[38]"
+									className="cursor-pointer p-1.75 h-[38] touch-manipulation"
 									onClick={() => removeFromCart(item.id)}
 								>
 									<Image
@@ -85,7 +85,7 @@ export default function ItemCart({ items }: IItem) {
 								{item.quantity}
 							</p>
 							<button
-								className="cursor-pointer px-0.5 py-0.75 h-[38]"
+								className="cursor-pointer px-0.5 py-0.75 h-[38] touch-manipulation"
 								onClick={() => increaseQuantity(item.id)}
 							>
 								<Image
