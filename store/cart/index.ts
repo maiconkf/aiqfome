@@ -116,17 +116,17 @@ export const useCartStore = create<CartState>()(
 					const extras =
 						item.extras?.reduce((sum, extra) => sum + (extra.value ?? 0), 0) ??
 						0
+
 					const drinks =
 						item.drinks?.reduce(
 							(sum, drink) => sum + (drink.value ?? 0) * drink.quantity,
 							0
 						) ?? 0
-					const utensils = Array.isArray(item.utensils)
-						? item.utensils.reduce((sum, ut) => sum + (ut.value ?? 0), 0)
-						: item.utensils?.value ?? 0
+
+					const utensils = item.utensils?.value ?? 0
 
 					const itemTotal =
-						(basePrice + extras + drinks + utensils) * item.quantity
+						basePrice * item.quantity + extras + drinks + utensils
 
 					return total + itemTotal
 				}, 0)
