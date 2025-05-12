@@ -6,7 +6,7 @@ export default function FooterCart() {
 	const { storeMinimunOrderValue, totalPrice } = useCartStore()
 
 	return (
-		<footer className="fixed bottom-0 left-0 w-full p-4 shadow-[0_0_15px_0_rgba(0,0,0,0.15)] bg-white">
+		<footer className="fixed bottom-0 left-0 w-full p-4 shadow-[0_0_15px_0_rgba(0,0,0,0.15)] bg-white rounded-tl-xl rounded-tr-xl">
 			<div className="container mx-auto px-2">
 				<div className="flex items-center justify-between flex-wrap">
 					<div className="mr-7">
