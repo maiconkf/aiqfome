@@ -17,6 +17,7 @@ export default function ProductSection({
 					height={195}
 					alt={name}
 					className="min-h-[195] object-cover object-center"
+					priority
 				/>
 			</section>
 			<section

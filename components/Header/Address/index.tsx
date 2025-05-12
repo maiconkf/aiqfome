@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function Address() {
 	return (
 		<div className="flex items-center ml-6">
-			<Image src="/icons/pin.svg" width={13} height={16} alt="Localização" />
+			<Image src="/icons/pin.svg" width={14} height={16} alt="Localização" />
 			<div className="ml-4">
 				<p className="text-[#EECFFC] mb-0.5 font-bold text-sm/4.75">
 					entregando em
@@ -18,7 +18,7 @@ export default function Address() {
 					<Image
 						src="/icons/chevron-right.svg"
 						width={6}
-						height={10}
+						height={11}
 						alt="Acessar"
 					/>
 				</button>

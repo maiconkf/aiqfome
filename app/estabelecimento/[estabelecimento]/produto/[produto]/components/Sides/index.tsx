@@ -27,7 +27,6 @@ export default function SidesSection({
 	const { addToCart, removeFromCart } = useCartStore()
 
 	useEffect(() => {
-		console.log('quantity', quantity)
 		if (selectedSides.length > 0 && !itemInCart && quantity > 0) {
 			handleAddToCart({
 				targetFlavor,

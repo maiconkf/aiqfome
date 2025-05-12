@@ -34,8 +34,8 @@ export default function Menu({ product, isStoreClosed }: IMenu) {
 				</div>
 				<Image
 					src="/icons/chevron-down.svg"
-					width={8}
-					height={14}
+					width={14}
+					height={8}
 					alt="Abrir categoria"
 					className={`transition-transform duration-300 ${
 						isOpen ? 'rotate-180' : ''

@@ -156,7 +156,7 @@ export default function DrinksSection({
 									<Image
 										src="/icons/add.svg"
 										width={32}
-										height={32}
+										height={33}
 										alt={`Adicionar ${drink.name}`}
 									/>
 								</button>

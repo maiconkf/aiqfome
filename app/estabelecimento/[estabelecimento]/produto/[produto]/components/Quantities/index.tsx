@@ -27,7 +27,6 @@ export default function QuantitiesSection({
 	const [showAddButton, setShowAddButton] = useState(true)
 
 	useEffect(() => {
-		console.log(itemInCart)
 		if (itemInCart) {
 			setShowAddButton(false)
 			setQuantity(itemInCart.quantity)
@@ -146,7 +145,7 @@ export default function QuantitiesSection({
 								<Image
 									src="/icons/trash.svg"
 									width={22}
-									height={23}
+									height={24}
 									alt="Remover"
 								/>
 							</button>
@@ -161,7 +160,7 @@ export default function QuantitiesSection({
 							<Image
 								src="/icons/add.svg"
 								width={32}
-								height={32}
+								height={33}
 								alt="Adicionar"
 							/>
 						</button>
