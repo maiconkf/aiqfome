@@ -158,7 +158,8 @@ export default function ItemCart({ items }: IItem) {
 							})}
 						</div>
 					)}
-					{storeDeliveryFee > 0 &&
+					{idx === items.length - 1 &&
+						storeDeliveryFee > 0 &&
 						(!storeFreeDeliveryMinimum ||
 							totalPrice(false) <= storeFreeDeliveryMinimum) && (
 							<div className="mb-1.5">
