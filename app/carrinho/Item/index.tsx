@@ -98,13 +98,13 @@ export default function ItemCart({ items }: IItem) {
 						</div>
 					</div>
 					{item.size && (
-						<div className="mb-1.5">
+						<div className="mt-1.5">
 							<ItemTitle title="tamanho" />
 							<ItemDescription description={item.size.name} />
 						</div>
 					)}
 					{item.sides && item.sides.length > 0 && (
-						<div className="mb-1.5">
+						<div className="mt-1.5">
 							<ItemTitle title="acompanhamentos" />
 							{item.sides.map((side, idx) => (
 								<ItemDescription key={idx} description={side.name} />
@@ -112,7 +112,7 @@ export default function ItemCart({ items }: IItem) {
 						</div>
 					)}
 					{item.drinks && item.drinks.length > 0 && (
-						<div className="mb-1.5">
+						<div className="mt-1.5">
 							<ItemTitle title="vai querer bebida?" />
 
 							{item.drinks.map((drink, idx) => {
@@ -130,7 +130,7 @@ export default function ItemCart({ items }: IItem) {
 						</div>
 					)}
 					{item.utensils && (
-						<div className="mb-1.5">
+						<div className="mt-1.5">
 							<ItemTitle title="extras" />
 							<div className="flex items-center mb-0.5">
 								<ItemDescription
@@ -144,7 +144,7 @@ export default function ItemCart({ items }: IItem) {
 						</div>
 					)}
 					{item.extras && item.extras.length > 0 && (
-						<div className="mb-1.5">
+						<div className="mt-1.5">
 							<ItemTitle title="extras" />
 							{item.extras.map((extra, idx) => {
 								return (
@@ -162,7 +162,7 @@ export default function ItemCart({ items }: IItem) {
 						storeDeliveryFee > 0 &&
 						(!storeFreeDeliveryMinimum ||
 							totalPrice(false) <= storeFreeDeliveryMinimum) && (
-							<div className="mb-1.5">
+							<div className="mt-1.5">
 								<ItemTitle title="frete" />
 
 								<div className="flex items-center mb-0.5">
@@ -177,7 +177,9 @@ export default function ItemCart({ items }: IItem) {
 							</div>
 						)}
 					{item.observations && (
-						<p className="text-xs mb-1.5 font-semibold bg-[#F5F6F9] rounded p-1.5">
+						<p
+							className={`text-xs mt-1.5 font-semibold bg-[#F5F6F9] rounded p-1.5`}
+						>
 							<span className="font-bold bg-[#F5F5F5] mr-1">observação:</span>
 							{item.observations}
 						</p>
