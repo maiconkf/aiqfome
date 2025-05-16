@@ -1,3 +1,5 @@
+'use client'
+
 import Store from '../Store'
 import storesData from '@/app/data/stores.json'
 import { IStore } from '../Store/store.interfaces'
